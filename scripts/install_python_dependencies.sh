@@ -4,7 +4,7 @@ set -e
 # Tạo virtual environment
 echo ">>> Create environment..."
 cd /home/ec2-user/www/django-crud
-python3 -m venv /home/ec2-user/www/venv
+python3 -m venv /home/ec2-user/www/django-crud/venv
 source /home/ec2-user/www/django-crud/venv/bin/activate
 
 echo ">>> Install dependencies..."
