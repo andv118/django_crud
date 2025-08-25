@@ -19,7 +19,7 @@ db.sqlite3
 
 # Media and static files (often collected during deployment)
 media/
-static/
+staticfiles/
 
 # IDE-specific files
 .idea/  # PyCharm
