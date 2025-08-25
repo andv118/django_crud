@@ -11,3 +11,5 @@ python3 manage.py migrate --noinput
 # collect static files
 echo ">>> Collect static..."
 python3 manage.py collectstatic --noinput
+
+sudo chmod -R 755 /home/ec2-user/www/django-crud/staticfiles
