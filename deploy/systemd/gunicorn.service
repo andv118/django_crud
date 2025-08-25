@@ -1,37 +1,4 @@
 [Unit]
-Description=Gunicorn daemon for Django (django-crud)
-After=network.target
-
-[Service]
-# Chạy bằng ec2-user, group 'nginx' để Nginx đọc được socket
-User=ec2-user
-Group=nginx
-WorkingDirectory=/home/ec2-user/www/django-crud
-Environment="PATH=/home/ec2-user/www/django-crud/venv/bin"
-# UMask=007 -> file socket 660, group nginx sẽ đọc được
-UMask=007
-
-# Dọn socket cũ trước khi start
-ExecStartPre=/bin/bash -lc 'mkdir -p /home/ec2-user/www/django-crud && chown ec2-user:nginx /home/ec2-user/www/django-crud && rm -f /home/ec2-user/www/django-crud/gunicorn.sock'
-
-# Start Gunicorn (đổi project.wsgi:application theo project của bạn)
-ExecStart=/home/ec2-user/www/django-crud/venv/bin/gunicorn \
-  --workers 3 \
-  --bind unix:/home/ec2-user/www/django-crud/gunicorn.sock \
-  crud1.wsgi:application
-
-# Tự restart nếu crash
-Restart=always
-RestartSec=3
-TimeoutStopSec=30
-
-[Install]
-WantedBy=multi-user.target
-
-
-
-
-[Unit]
 Description=Gunicorn daemon
 After=network.target
 

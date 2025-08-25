@@ -34,7 +34,3 @@ hooks:
     - location: scripts/install_ngnix.sh
       timeout: 6000
       runas: root
-
-    - location: scripts/start_service.sh
-      timeout: 6000
-      runas: root
