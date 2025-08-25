@@ -10,4 +10,4 @@ python3 manage.py migrate --noinput
 
 # collect static files
 echo ">>> Collect static..."
-# python3 manage.py collectstatic --noinput
+python3 manage.py collectstatic --noinput

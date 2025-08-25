@@ -9,6 +9,10 @@ permissions:
     owner: ec2-user
     group: ec2-user
 hooks:
+  ApplicationStop:
+    - location: scripts/stop_service.sh
+      timeout: 6000
+      runas: root
   BeforeInstall:
     - location: scripts/clean_instance.sh
       timeout: 6000
@@ -23,13 +27,14 @@ hooks:
     - location: scripts/migrate.sh
       timeout: 6000
       runas: ec2-user
-    - location: scripts/install_ngnix.sh
-      timeout: 6000
-      runas: root
+  ApplicationStart:
     - location: scripts/install_gunicorn.sh
       timeout: 6000
       runas: root
-  ApplicationStart:
-    - location: scripts/start_gunicorn.sh
+    - location: scripts/install_ngnix.sh
+      timeout: 6000
+      runas: root
+
+    - location: scripts/start_service.sh
       timeout: 6000
       runas: root

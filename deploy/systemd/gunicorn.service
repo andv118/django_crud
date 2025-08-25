@@ -27,3 +27,26 @@ TimeoutStopSec=30
 
 [Install]
 WantedBy=multi-user.target
+
+
+
+
+[Unit]
+Description=Gunicorn daemon
+After=network.target
+
+[Service]
+User=ec2-user
+Group=ec2-user
+WorkingDirectory=/home/ec2-user/www/django-crud
+
+# Start Gunicorn (đổi project.wsgi:application theo project của bạn)
+ExecStart=/home/ec2-user/www/django-crud/venv/bin/gunicorn \
+  --workers 3 \
+  --bind 127.0.0.1:8000 \
+  crud1.wsgi:application
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
