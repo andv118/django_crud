@@ -31,6 +31,6 @@ hooks:
     - location: scripts/install_gunicorn.sh
       timeout: 6000
       runas: root
-    - location: scripts/install_ngnix.sh
+    - location: scripts/install_nginx.sh
       timeout: 6000
       runas: root
